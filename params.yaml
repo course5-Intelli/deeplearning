@@ -1,0 +1,46 @@
+base:
+  project: Deep_Learning
+  data_source: s3://mlops-data-course5i13/Tumor Data/Training/*
+
+load_data:
+  num_classes: 4
+  raw_data: s3://mlops-data-course5i13/Tumor Data/Training/*
+  preprocessed_data: data/processed
+  full_path: s3://mlops-data-course5i13/Tumor Data/Training/*
+
+train_split:
+  split_ratio: 80
+  
+model:
+  name: VGG19
+  trainable: True
+  train_path: data/processed/train
+  test_path: data/processed/test
+  image_size: [225,225]
+  loss: 'categorical_crossentropy'
+  optimizer: 'adam'
+  metrics: ['accuracy']
+  epochs: 6
+  sav_dir: saved_models/trained.h5
+  
+img_augment:
+  rescale: 1./255
+  shear_range: 0.2
+  zoom_range: 0.20
+  horizontal_flip: True
+  vertical_flip: True
+  batch_size: 18
+  class_mode: 'categorical'
+  web_model_directory: saved_models/trained.h5
+  
+mlflow_config:
+  artifacts_dir: artifacts
+  experiment_name: Deep_learning_MLOps
+  run_name: mlops
+  registered_model_name: Deep_Learning
+  remote_server_uri: http://127.0.0.1:5000
+
+    
+
+
+

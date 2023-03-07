@@ -1,0 +1,32 @@
+stages:
+  load_data:
+    cmd: python src/split.py --config=params.yaml
+    deps:
+      - src/get_data.py
+      - src/split.py
+      - s3://mlops-data-course5i13/Tumor Data/Training/*
+    
+    outs:
+      - data/processed: 
+          persist: true
+  train_model:
+    cmd: python src/model_train.py --config=params.yaml
+    deps:
+     - src/get_data.py
+     - src/model_train.py
+    outs:
+     - saved_models:
+       persist: True
+     - reports:
+       persist: True
+
+  evaluate:
+    cmd: python src/evaluate.py --config=params.yaml
+    deps:
+      - src/get_data.py
+      - src/evaluate.py
+  
+  log_production_model:
+    cmd: python src/log_production_model.py --config=params.yaml
+    deps:
+      - src/log_production_model.py

@@ -1,0 +1,17 @@
+click
+Sphinx
+coverage
+flake8
+dvc
+mlflow
+pandas
+numpy
+boto3
+keras
+tensorflow
+jupyterlab
+# logging
+argparse
+seaborn
+
+
