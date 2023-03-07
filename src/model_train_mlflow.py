@@ -12,9 +12,9 @@ import matplotlib.pyplot as plt
 from keras.applications.vgg19 import VGG19
 import tensorflow
 import mlflow
-from disutils.command.config import config
+# from disutils.command.config import config
 from http import client
-from mlflow.tracking import mlflowClient
+# from mlflow.tracking import mlflowClient
 from pprint import pprint
 from urllib.parse import urlparse
 
@@ -89,7 +89,7 @@ def train_model_mlflow(config_file):
                 mlflow.keras.load_model(mod,"model")
         
         ##################################### MLFLOW END #####################################
-        
+
 
     else:
         print("model is not trained")
