@@ -38,7 +38,7 @@ mlflow_config:
   experiment_name: Deep_learning_MLOps
   run_name: mlops
   registered_model_name: Deep_Learning
-  remote_server_uri: http://127.0.0.1:5000
+  remote_server_uri: http://0.0.0.0:5000
 
     
 
